@@ -1,0 +1,30 @@
+<tool id="export_cbioportal_image" name="Link image to cBioPortal resource" version="1.0.0">
+    <description>Add image to cBioportal patient resource</description>
+    <command interpreter="python">
+        ${__tool_directory__}/export_cbioportal_image.py --input_image "$input_data" --study_id "$study_id" --case_id "$case_id" --meta_definition_output "$meta_definition_file" --data_definition_output "$data_definition_file"  --meta_patient_output "$meta_patient_file" --data_patient_output "$data_patient_file" --overwrite --name "$image_name"
+    </command>
+    <environment_variables>
+        <environment_variable name="UPLOAD_IMAGE_ENDPOINT">http://cbioportal-galaxy-connector:3001/upload-image/</environment_variable>
+        <environment_variable name="CBIOPORTAL_LOAD_RESOURCE_ENDPOINT">http://cbioportal-galaxy-connector:3001/export-ressource-to-cbioportal</environment_variable>
+        <environment_variable name="IMAGE_BASE_URL">http://localhost:3001</environment_variable>
+    </environment_variables>
+    <inputs>
+        <param name="input_data" type="data" format="png" label="Input data file from history" optional="false" />
+        <param name="study_id" type="text" label="Study ID" optional="false" value="nsclc_tracerx_2017" />
+        <param name="case_id" type="text" label="Case ID" optional="false" value="CRUK0009" />
+        <param name="image_name" type="text" label="Image Name" value="input_image.png" help="Name for the image. Useful if an image with this name was already uploaded." />
+        <param name="overwrite" type="boolean" label="Overwrite image URL?" selected="true" help="If this option is selected, if and image with the same name already exists, the tool will send an error. Please note that only the new image will be displayed by cBioportal"/>
+    </inputs>
+    <outputs>
+        <data name="meta_definition_file" format="txt" label="Meta Resource definition: ${tool.name} on ${study_id}_${case_id}_${on_string}" />
+        <data name="data_definition_file" format="tabular" label="Data Resource Timeline: ${tool.name} on ${study_id}_${case_id}_${on_string}" />
+        <data name="meta_patient_file" format="txt" label="Meta Patient: ${tool.name} on ${study_id}_${case_id}_${on_string}" />
+        <data name="data_patient_file" format="tabular" label="Data Patient: ${tool.name} on ${study_id}_${case_id}_${on_string}" />
+        <param name="overwrite" type="boolean" label="Overwrite existing data?" value="false" />
+    </outputs>
+    <help>
+        This tool allows you to link an image to a patient in cBioportal.
+        The image will be uploaded an image hosting server and the URL will be added to the patient resource.
+        The tool will also generate the necessary files to load the resource to cBioportal.
+    </help>
+</tool>
