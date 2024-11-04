@@ -119,7 +119,7 @@ if __name__ == "__main__":
     parser.add_argument("-e", "--env_dir_path", help="Path to the .env file")
 
     args = parser.parse_args()
-    load_dotenv(args.path_dir)
+    load_dotenv(args.env_dir_path)
 
     name_meta_resource_definition = "meta_resource_definition.txt"
     name_data_resource_definition = "data_resource_definition.txt"
