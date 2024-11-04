@@ -1,13 +1,13 @@
 <tool id="export_cbioportal_image" name="Link image to cBioPortal resource" version="1.0.0">
     <description>Add image to cBioportal patient resource</description>
     <command interpreter="python">
-        ${__tool_directory__}/export_cbioportal_image.py --input_image "$input_data" --study_id "$study_id" --case_id "$case_id" --meta_definition_output "$meta_definition_file" --data_definition_output "$data_definition_file"  --meta_patient_output "$meta_patient_file" --data_patient_output "$data_patient_file" --overwrite --name "$image_name"
+        ${__tool_directory__}/export_cbioportal_image.py --env_path "${__tool_directory__}/.env" --input_image "$input_data" --study_id "$study_id" --case_id "$case_id" --meta_definition_output "$meta_definition_file" --data_definition_output "$data_definition_file"  --meta_patient_output "$meta_patient_file" --data_patient_output "$data_patient_file" --overwrite --name "$image_name"
     </command>
-    <environment_variables>
-        <environment_variable name="UPLOAD_IMAGE_ENDPOINT">http://cbioportal-galaxy-connector:3001/upload-image/</environment_variable>
-        <environment_variable name="CBIOPORTAL_LOAD_RESOURCE_ENDPOINT">http://cbioportal-galaxy-connector:3001/export-ressource-to-cbioportal</environment_variable>
-        <environment_variable name="IMAGE_BASE_URL">http://localhost:3001</environment_variable>
-    </environment_variables>
+<!--    <environment_variables>-->
+<!--        <environment_variable name="UPLOAD_IMAGE_ENDPOINT">http://cbioportal-galaxy-connector:3001/upload-image/</environment_variable>-->
+<!--        <environment_variable name="CBIOPORTAL_LOAD_RESOURCE_ENDPOINT">http://cbioportal-galaxy-connector:3001/export-ressource-to-cbioportal</environment_variable>-->
+<!--        <environment_variable name="IMAGE_BASE_URL">http://localhost:3001</environment_variable>-->
+<!--    </environment_variables>-->
     <inputs>
         <param name="input_data" type="data" format="png" label="Input data file from history" optional="false" />
         <param name="study_id" type="text" label="Study ID" optional="false" value="nsclc_tracerx_2017" />

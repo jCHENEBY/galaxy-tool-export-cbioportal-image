@@ -4,6 +4,7 @@ from urllib.parse import urlparse, urlunparse
 
 import requests
 import pandas as pd
+from dotenv import load_dotenv
 
 
 def make_meta_resource(study_id: str, data_file: str, type: str) -> str:
@@ -115,8 +116,10 @@ if __name__ == "__main__":
     parser.add_argument("-ddp", "--data_patient_output", required=True, help="Output resource patient data file path")
     parser.add_argument("-o", "--overwrite", action="store_true", help="Overwrite existing image URL")
     parser.add_argument("-n", "--name", help="Name of the image")
+    parser.add_argument("-e", "--env_dir_path", help="Path to the .env file")
 
     args = parser.parse_args()
+    load_dotenv(args.path_dir)
 
     name_meta_resource_definition = "meta_resource_definition.txt"
     name_data_resource_definition = "data_resource_definition.txt"
