@@ -1,7 +1,7 @@
 <tool id="export_cbioportal_image" name="Link image to cBioPortal resource" version="1.0.0">
     <description>Add image to cBioportal patient resource</description>
     <command interpreter="python">
-        ${__tool_directory__}/export_cbioportal_image.py --env_path "${__tool_directory__}/.env" --input_image "$input_data" --study_id "$study_id" --case_id "$case_id" --meta_definition_output "$meta_definition_file" --data_definition_output "$data_definition_file"  --meta_patient_output "$meta_patient_file" --data_patient_output "$data_patient_file" --overwrite --name "$image_name"
+        ${__tool_directory__}/export_cbioportal_image.py --env_dir_path "${__tool_directory__}/.env" --input_image "$input_data" --study_id "$study_id" --case_id "$case_id" --meta_definition_output "$meta_definition_file" --data_definition_output "$data_definition_file"  --meta_patient_output "$meta_patient_file" --data_patient_output "$data_patient_file" --overwrite --name "$image_name"
     </command>
 <!--    <environment_variables>-->
 <!--        <environment_variable name="UPLOAD_IMAGE_ENDPOINT">http://cbioportal-galaxy-connector:3001/upload-image/</environment_variable>-->
